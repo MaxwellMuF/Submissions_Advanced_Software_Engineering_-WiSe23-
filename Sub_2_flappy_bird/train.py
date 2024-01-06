@@ -140,12 +140,15 @@ def train(opt):
         state = next_state
         iter += 1
         if iter % 10 == 0:
-            print("Iteration: {}/{}, Action: {}, Loss: {}, Epsilon {}, Reward: {}, Q-value: {}".format(
+            print("Iteration: {}/{}, Action: {}, Loss: {}, Epsilon: {}, lr: {} Reward: {}, Q-value: {}".format(
                 iter + 1,
                 opt.num_iters,
                 action,
                 loss,
-                epsilon, reward, torch.max(prediction)))
+                round(epsilon, 7),
+                opt.lr,
+                reward, 
+                torch.max(prediction)))
         writer.add_scalar('Train/Loss', loss, iter)
         writer.add_scalar('Train/Epsilon', epsilon, iter)
         writer.add_scalar('Train/Reward', reward, iter)
