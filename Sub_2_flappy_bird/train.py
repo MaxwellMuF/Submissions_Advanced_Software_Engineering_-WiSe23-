@@ -71,6 +71,8 @@ def train(opt):
     x_values = np.linspace(0, interval_end, opt.num_iters)          # of iteration on e-function
     # multiply lr by 1e4 and make decay ever 25% if iteration two lines below
     opt.lr = opt.lr * 1e4
+    # print "Perform a random action" only 10% of the time (Iterations as well)
+    count_rand_act = 0
     while iter < opt.num_iters:
         #  make lr decay ever 25%
         if iter % (opt.num_iters/4) == 0:
@@ -82,7 +84,9 @@ def train(opt):
         u = random()
         random_action = u <= epsilon
         if random_action:
-            print("Perform a random action")
+            count_rand_act += 1
+            if count_rand_act % 10 == 0:
+                print("Perform a random action")
             # The following decay reduces the initially high probability of not jumping during a random action
             no_act_prob = 9 - int(iter*10 / opt.num_iters) # decay of no act prob [0] every 10% of iter
             no_act_prob = max(no_act_prob,1)
@@ -135,12 +139,13 @@ def train(opt):
 
         state = next_state
         iter += 1
-        print("Iteration: {}/{}, Action: {}, Loss: {}, Epsilon {}, Reward: {}, Q-value: {}".format(
-            iter + 1,
-            opt.num_iters,
-            action,
-            loss,
-            epsilon, reward, torch.max(prediction)))
+        if iter % 10 == 0:
+            print("Iteration: {}/{}, Action: {}, Loss: {}, Epsilon {}, Reward: {}, Q-value: {}".format(
+                iter + 1,
+                opt.num_iters,
+                action,
+                loss,
+                epsilon, reward, torch.max(prediction)))
         writer.add_scalar('Train/Loss', loss, iter)
         writer.add_scalar('Train/Epsilon', epsilon, iter)
         writer.add_scalar('Train/Reward', reward, iter)
