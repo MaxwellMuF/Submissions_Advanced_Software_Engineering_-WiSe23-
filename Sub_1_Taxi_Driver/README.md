@@ -7,3 +7,6 @@ matrikel: 102090
 
 # Comment:
 The Ki was trained and tested as specified. The only change in the notebook is the increase of the test rounds to "num_episodes = 10". This can also be seen in the gif.  
+
+# Link to Git Repo
+https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/tree/main/Sub_1_Taxi_Driver
