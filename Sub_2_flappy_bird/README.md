@@ -9,7 +9,7 @@ matrikel: 102090
 Spider was used for training (but VS code for the repository).
 1. The hyperparameters of the last training were as follows (Figure 1)![Screenshot (583)](https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/assets/148557718/f75dbfec-4c77-4708-b9b7-1f24ebce7d05)
 
-2. The printouts and saves of the model were as follows (Figure 2). A current model was saved every 10k iterations in case the process crashes. A model was saved for every 100k for later analysis.![Screenshot (584)](https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/assets/148557718/caddd159-43be-43e6-b8cf-b7f0543982ea)
+2. The printouts and saves of the model were as follows (Figure 2). A current model was saved every 10k iterations in case the process crashes. A model was saved for every 100k for later analysis.![Screenshot (585)](https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/assets/148557718/6bf353a6-ec16-4a90-9a2e-3866d6f84a65)
 
 3. The code was slightly modified for training and for optimizing the hyperparameters (Figure 3). The ideas implemented for this are explained in the next section.
 ![Screenshot (586)](https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/assets/148557718/8a8836ad-650a-4ee8-8852-ea072f7e1309)
