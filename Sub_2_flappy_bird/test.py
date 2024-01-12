@@ -75,8 +75,8 @@ def test(opt, model_file="flappy_bird"):
 # These models are trained by the student with slitly different hyperparameters like exporation (with decay) and l-rate:
 # Uncommen the model below you want to test
 #model = "flappy_bird_S-R_100000_lr_e-5"
-model = "flappy_bird_S-R_current_high_lr_eps"
-
+#model = "flappy_bird_S-R_current_high_lr_eps"
+model = "flappy_bird_S-R_200000_high_lr_eps"
 if __name__ == "__main__":
     opt = get_args()
     test(opt, model)
