@@ -8,7 +8,7 @@ current_working_directory = os.getcwd()
 print(f"The current working directory is: {current_working_directory}")
 
 # Change the working directory to a new directory (replace with the path you want)
-new_working_directory = r"C:\Users\sebas\Documents\Data_Science\WS_23_24\Fortgeschrittene Softwaretechnik\Repo_advanced_software_engineering_WiSe23\BHT_advanced_software_engineering_WiSe23\Lec2_Deep_Q-Learning\0_Exercise_env"
+new_working_directory = r"C:\Users\sebas\Documents\Data_Science\WS_23_24\Fortgeschrittene Softwaretechnik\Submissions_Advanced_Software_Engineering_WiSe23\Sub_2_flappy_bird"
 os.chdir(new_working_directory)
 
 # Get and print the new current working directory
