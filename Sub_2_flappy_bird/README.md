@@ -22,6 +22,7 @@ To get a better understanding of the flappy bird model, the agent was trained se
     1. the learning rate with dacay. The agent starts with a high learning rate, which decreases over time (latest: lr*0.1 every 50% of data).
     2. epsilon: The rate of random actions with decay. The exploration rate was strongly increased at the beginning and then a damping (decrease) was built in with an e-function until the final_epsilon was reached at the end of the training.
     3. random_action: The probability of making a jump as a random action has been reduced (again with decay). Initially only 10% of random actions are a jump. With a further decay, the rate will be 50/50 again at the end (or for the last 30% of the training).
+    
 Thus, an agent could be trained that could pass 3-4 or more tunnels (after 100k training iterations), at least in some scenarios. However, it is suspected that this agent is overtrained and it remains to be seen whether he can ever master the perfect game and whether he needs less than 2m iterations of training to do so. The overtraining is visible when the agent (bird) hits a wall. This action seems to be far from the perfect game, even if it only occurs after 5-10 tunnels have been successfully passed. Nevertheless, this last agent (200k training iter) seems to perform better than the given 1m agent.
 
 # Link to Git Repo
