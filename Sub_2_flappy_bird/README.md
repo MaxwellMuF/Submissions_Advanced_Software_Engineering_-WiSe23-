@@ -22,4 +22,4 @@ To get a better understanding of the flappy bird model, the agent was trained se
 Thus, an agent could be trained that could pass 1-2 or more tunnels (after 100k training iterations), at least in some scenarios. However, it is suspected that this agent is overtrained and it remains to be seen whether he can ever master the perfect game and whether he needs less than 1m iterations of training to do so.
 
 # Link to Git Repo
-https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/tree/main/Sub_1_Taxi_Driver
+https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/tree/main/Sub_2_flappy_bird
