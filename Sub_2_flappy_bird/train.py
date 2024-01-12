@@ -30,10 +30,10 @@ def get_args():
     parser.add_argument("--image_size", type=int, default=84, help="The common width and height for all images")
     parser.add_argument("--batch_size", type=int, default=32, help="The number of images per batch")
     parser.add_argument("--optimizer", type=str, choices=["sgd", "adam"], default="adam")
-    parser.add_argument("--lr", type=float, default=1e-6)
+    parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--gamma", type=float, default=0.99)
     parser.add_argument("--initial_epsilon", type=float, default=0.9)
-    parser.add_argument("--final_epsilon", type=float, default=1e-2)
+    parser.add_argument("--final_epsilon", type=float, default=1e-3)
     parser.add_argument("--num_iters", type=int, default=200_000)
     parser.add_argument("--replay_memory_size", type=int, default=50_000,
                         help="Number of epoches between testing phases")
@@ -70,14 +70,14 @@ def train(opt):
     interval_end = -np.log(opt.final_epsilon / opt.initial_epsilon) # project or transform interval 
     x_values = np.linspace(0, interval_end, opt.num_iters)          # of iteration on e-function
     # multiply lr by 1e4 and make decay ever 25% if iteration two lines below
-    opt.lr = opt.lr * 1e4
+    # opt.lr = opt.lr * 1e3
     # print "Perform a random action" only 10% of the time (Iterations as well)
     count_rand_act = 0
     while iter < opt.num_iters:
         #  make lr decay ever 25%
-        if iter % (opt.num_iters/4) == 0:
-            opt.lr = opt.lr /10
-            optimizer = torch.optim.Adam(model.parameters(), lr=opt.lr)
+        if iter % int(opt.num_iters/2) == 0:
+             opt.lr = opt.lr /10
+             optimizer = torch.optim.Adam(model.parameters(), lr=opt.lr)
         prediction = model(state)[0]
         # Exploration or exploitation
         epsilon = opt.initial_epsilon*np.exp(-x_values[iter]) # Exponential decay of the exploration-rate
@@ -139,11 +139,12 @@ def train(opt):
 
         state = next_state
         iter += 1
-        if iter % 10 == 0:
-            print("Iteration: {}/{}, Action: {}, Loss: {}, Epsilon: {}, lr: {} Reward: {}, Q-value: {}".format(
+        if (iter-1) % 10 == 0:
+            print("Iteration: {}/{}, Action: {}, no_act_prob: {}, Loss: {}, Epsilon: {}, lr: {} Reward: {}, Q-value: {}".format(
                 iter + 1,
                 opt.num_iters,
                 action,
+                no_act_prob,
                 loss,
                 round(epsilon, 7),
                 opt.lr,
@@ -154,10 +155,10 @@ def train(opt):
         writer.add_scalar('Train/Reward', reward, iter)
         writer.add_scalar('Train/Q-value', torch.max(prediction), iter)
         if (iter+1) % 100_000 == 0:
-            torch.save(model, "{}/flappy_bird_S-R_{}_high_lr_eps".format(opt.saved_path, iter+1))
+            torch.save(model, "{}/flappy_bird_S-R_{}_high_lr_eps_spy".format(opt.saved_path, iter+1))
         if (iter+1) % 10_000 == 0:
-            torch.save(model, "{}/flappy_bird_S-R_current_high_lr_eps".format(opt.saved_path))
-    torch.save(model, "{}/flappy_bird".format(opt.saved_path))
+            torch.save(model, "{}/flappy_bird_S-R_current_high_lr_eps_spy".format(opt.saved_path))
+    # torch.save(model, "{}/flappy_bird".format(opt.saved_path))
 
 
 if __name__ == "__main__":
