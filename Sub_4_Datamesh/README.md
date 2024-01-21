@@ -1,6 +1,7 @@
 # Submission 4: Exercise Data Mesh
+Link to the repository: https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/tree/main/Sub_4_Datamesh
 
-## Given website: datamesh-manager.com
+## Given website: https://datamesh-manager.com/
 Make data management better.
 Relatiuon between data owner and data consumer.
 Organize data source (data base) and data product (data processing and outcome)
