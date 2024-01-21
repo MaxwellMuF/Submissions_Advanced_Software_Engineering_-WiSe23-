@@ -1,4 +1,4 @@
-# Submission 4: Exercise Data Mesh
+# Submission 3: Exercise Data Mesh
 Link to the repository: https://github.com/MaxwellMuF/Submissions_Advanced_Software_Engineering_-WiSe23-/tree/main/Sub_4_Datamesh
 
 ## Given website: https://datamesh-manager.com/
